@@ -7,14 +7,14 @@ const commands = [{
   description: 'Replies with Pong!'
 }];
 
-const rest = new REST({ version: '9' }).setToken("OTEyNzI2MTUwMTYwMjExOTk4.YZ0Idw.TO8YIv5eirkvrp4QU3Yfi4hEBnc");
+const rest = new REST({ version: '9' }).setToken(config.token);
 
 (async () => {
   try {
     console.log('BOT START\n\nStarted refreshing application (/) commands.');
 
     await rest.put(
-      Routes.applicationGuildCommands("912726150160211998", "707539549466787840"),
+      Routes.applicationGuildCommands(config.client_ID, config.guild_ID),
       { body: commands },
     );
 
@@ -40,4 +40,4 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
-client.login("OTEyNzI2MTUwMTYwMjExOTk4.YZ0Idw.TO8YIv5eirkvrp4QU3Yfi4hEBnc");
+client.login(config.token);
